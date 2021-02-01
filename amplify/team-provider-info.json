@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mesui-dev-220422-authRole",
+      "UnauthRoleArn": "arn:aws:iam::794385572658:role/amplify-mesui-dev-220422-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::794385572658:role/amplify-mesui-dev-220422-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-mesui-dev-220422-deployment",
+      "UnauthRoleName": "amplify-mesui-dev-220422-unauthRole",
+      "StackName": "amplify-mesui-dev-220422",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:794385572658:stack/amplify-mesui-dev-220422/35203950-5106-11eb-b128-06471c3627e4",
+      "AmplifyAppId": "d39e7k77aoyfyd"
+    },
+    "categories": {
+      "auth": {
+        "mesui6bfc00e9": {}
+      }
+    }
+  }
+}
