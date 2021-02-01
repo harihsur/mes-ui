@@ -144,7 +144,7 @@ video, #screenshot-img {
         <div class="tab-content">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <main class="admincontent" id="admincontent">
-                    <h3 class="mb-5"> MES Group Workforce Admin </h3>
+                    <h3 class="mb-5"> MES Group Workforce</h3>
                     <h3 class="adminname" id="adminname">
                         </h4>
                         <form>
@@ -166,8 +166,9 @@ video, #screenshot-img {
                         </form>
                 </main>
             </div>
-            <div class="tab-pane fade" id="attendance" role="tabpanel" aria-labelledby="attendance-tab" style="margin-top: 5%;">
-                <h3 id="attendanceUsr"></h3>
+            <div class="tab-pane fade" id="attendance" role="tabpanel" aria-labelledby="attendance-tab" style="">
+                <h3 class="mb-5"> MES Group Worker Information</h3>
+                <span id="attendanceUsr"></span>
                 <div class="container-fluid">
                     <div class="row">
                         <div style="width:20%;">
@@ -180,11 +181,14 @@ video, #screenshot-img {
                         <div style="width:80%;">
                             <center>
                                 <div class="table-responsive-lg">
-                                    <table id="attendancedata" class="table table-hover table-striped" style="width:80%;">
+                                    <table id="attendancedata" class="table table-hover table-striped" style="width:80%;height: 60%;overflow-y: auto;">
                                         <thead>
                                             <tr>
                                                 <th data-field="time" data-formatter="dateFormat">Recorded Presence</th>
-                                                <th data-field="sentiment">Sentiment</th>
+                                                <th data-field="sentiment">Emotion</th>
+                                                <th data-field="age">Age Range</th>
+                                                <th data-field="gender">Gender</th>
+                                                <th data-field="smile">Smile</th>
                                             </tr>
                                         </thead>
                                     </table>
