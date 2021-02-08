@@ -9,104 +9,113 @@
     <link href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css" rel="stylesheet">
     <style>
         html,
-    body {
-        font-family: "Amazon Ember", "Helvetica", "sans-serif";
-        margin: 0;
-    }
-
-    .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
-.code {
-  width: 60%;
-  text-align: left;
-  font-family:courier;
-  font-size: 10pt;
-  margin: 5px; border: 1px solid black;
-} 
-
-video, #screenshot-img {
-    width: 400px;
-    height: 300px;
-    border: 1px solid #ccc;
-}
-
-    a {
-        color: #ff9900;
-    }
-
-    h1 {
-        font-weight: 300;
-    }
-
-    hr {
-        height: 1px;
-        background: lightgray;
-        border: none;
-    }
-
-    .btn{ margin-right: 20px;}
-
-    .app {
-        width: 100%;
-    }
-
-    .app-header {
-        color: white;
-        text-align: center;
-        background: linear-gradient(30deg, #f90 55%, #ffc300);
-        width: 100%;
-        height: 20%;
-        margin: 0 0 1em 0;
-        padding: 1em 0 1em 0;
-        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .app-logo {
-        width: 126px;
-        margin: 0 auto;
-    }
-
-    .app-body {
-        width: 400px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .app-body button {
-        background-color: #ff9900;
-        font-size: 14px;
-        color: white;
-        text-transform: uppercase;
-        padding: 1em;
-        border: none;
-    }
-
-    .app-body button:hover {
-        opacity: 0.8;
-    }
+        body {
+            font-family: "Amazon Ember", "Helvetica", "sans-serif";
+            margin: 0;
+        }
+        
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        
+        .code {
+            width: 60%;
+            text-align: left;
+            font-family: courier;
+            font-size: 10pt;
+            margin: 5px;
+            border: 1px solid black;
+        }
+        
+        video,
+        #screenshot-img {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+        
+        a {
+            color: #ff9900;
+        }
+        
+        h1 {
+            font-weight: 300;
+        }
+        
+        hr {
+            height: 1px;
+            background: lightgray;
+            border: none;
+        }
+        
+        .btn {
+            margin-right: 20px;
+        }
+        
+        .app {
+            width: 100%;
+        }
+        
+        .app-header {
+            color: white;
+            text-align: center;
+            background: linear-gradient(30deg, #f90 55%, #ffc300);
+            width: 100%;
+            height: 20%;
+            margin: 0 0 1em 0;
+            padding: 1em 0 1em 0;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .app-logo {
+            width: 126px;
+            margin: 0 auto;
+        }
+        
+        .app-body {
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .app-body button {
+            background-color: #ff9900;
+            font-size: 14px;
+            color: white;
+            text-transform: uppercase;
+            padding: 1em;
+            border: none;
+        }
+        
+        .app-body button:hover {
+            opacity: 0.8;
+        }
+        
+        .img {
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
 </head>
 
 <body class="text-center">
     <style>
         .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
-      }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
     </style>
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
@@ -117,7 +126,7 @@ video, #screenshot-img {
                 <img src="https://aws-amplify.github.io/images/Logos/Amplify-Logo-White.svg" width="30px" alt="AWS Amplify">MES Workforce Management Portal <button id="signout" class="btn btn-lg btn-block btn-success">Signout</button></div>
         </div>-->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f90;">
-            <a class="navbar-brand" href="#"><img src="https://aws-amplify.github.io/images/Logos/Amplify-Logo-White.svg" width="30px" alt="" style="margin: 2%;">MES Workforce Management Portal</a>
+            <a class="navbar-brand" href="#"><img src="https://aws-amplify.github.io/images/Logos/Amplify-Logo-White.svg" width="30px" alt="" style="margin: 2%;">MES Workforce Portal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -135,10 +144,13 @@ video, #screenshot-img {
         <!-- Nav tabs -->
         <ul class="nav nav-pills mb-3" id="myTab" role="tablist" style="margin-top: 2%;">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Workers List</a>
+                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Workers</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="attendance-tab" data-bs-toggle="tab" href="#attendance" role="tab" aria-controls="attendance" aria-selected="false">Worker details</a>
+                <a class="nav-link" id="attendance-tab" data-bs-toggle="tab" href="#attendance" role="tab" aria-controls="attendance" aria-selected="false">Worker Detail</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="audit-tab" data-bs-toggle="tab" href="#audit" role="tab" aria-controls="audit" aria-selected="false">Audit</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -166,7 +178,7 @@ video, #screenshot-img {
                         </form>
                 </main>
             </div>
-            <div class="tab-pane fade" id="attendance" role="tabpanel" aria-labelledby="attendance-tab" style="">
+            <div class="tab-pane fade" id="attendance" role="tabpanel" aria-labelledby="attendance-tab">
                 <h3 class="mb-5"> MES Group Worker Information</h3>
                 <span id="attendanceUsr"></span>
                 <div class="container-fluid">
@@ -186,7 +198,7 @@ video, #screenshot-img {
                                             <tr>
                                                 <th data-field="time" data-formatter="dateFormat">Recorded Presence</th>
                                                 <th data-field="sentiment">Emotion</th>
-                                                <th data-field="age">Age Range</th>
+                                                <th data-field="age" data-visible="false">Age Range</th>
                                                 <th data-field="gender">Gender</th>
                                                 <th data-field="smile">Smile</th>
                                             </tr>
@@ -194,6 +206,24 @@ video, #screenshot-img {
                                     </table>
                                 </div>
                             </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="audit" role="tabpanel" aria-labelledby="audit-tab">
+                <h3 class="mb-5">Secuity Camera Images</h3>
+                <center>
+                    <div style="width:80%;">
+                        <div class="accordion accordion-flush" id="auditData">
+                        </div>
+                    </div>
+                </center>
+                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img src="" class="img-responsive img">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,7 +237,7 @@ video, #screenshot-img {
                 <div class="app-logo">
                     <img src="https://aws-amplify.github.io/images/Logos/Amplify-Logo-White.svg" alt="AWS Amplify" />
                 </div>
-                <h1>MES Workforce Management Portal</h1>
+                <h1>MES Workforce Portal</h1>
             </div>
         </div>
         <center>
@@ -241,28 +271,37 @@ video, #screenshot-img {
     <script src="main.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script type="text/javascript">
-    function dateFormat(value, row, index) {
-        var prettyDate = moment(value).format('D MMM YYYY h:mm:ss a');
-        if (prettyDate === 'Invalid date') {
-            prettyDate = "New Worker";
+        function dateFormat(value, row, index) {
+            var prettyDate = moment(value).format('D MMM YYYY h:mm:ss a');
+            if (prettyDate === 'Invalid date') {
+                prettyDate = "New Worker";
+            }
+            return prettyDate;
         }
-        return prettyDate;
-    }
 
-    var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
-    triggerTabList.forEach(function(triggerEl) {
-        var tabTrigger = new bootstrap.Tab(triggerEl)
+        function numFormat(value, row, index) {
+            console.log(value)
+            console.log(row)
+            var size = 0;
+            if (value && value > 0) {
+                size = Math.round(value / 1024);
+            }
+            return size + " KB";
+        }
+        var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+        triggerTabList.forEach(function(triggerEl) {
+            var tabTrigger = new bootstrap.Tab(triggerEl)
 
-        triggerEl.addEventListener('click', function(event) {
-            event.preventDefault()
-            tabTrigger.show()
-        })
-    });
+            triggerEl.addEventListener('click', function(event) {
+                event.preventDefault()
+                tabTrigger.show()
+            })
+        });
 
-    var tabEl = document.querySelector('a[data-bs-toggle="tab"]')
-    tabEl.addEventListener('shown.bs.tab', function(event) {
-        document.getElementById("newphoto").value = "";
-    })
+        var tabEl = document.querySelector('a[data-bs-toggle="tab"]')
+        tabEl.addEventListener('shown.bs.tab', function(event) {
+            document.getElementById("newphoto").value = "";
+        });
     </script>
     <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

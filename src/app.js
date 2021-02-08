@@ -129,7 +129,7 @@ workersignout.addEventListener("click", (evt) => {
 
 // -------------------------------------------------------------------------------------------------------------
 
-const getData = async (url) => {
+const getData = async(url) => {
     try {
         const response = await fetch(url);
         const json = await response.json();
@@ -140,7 +140,7 @@ const getData = async (url) => {
     }
 }
 
-const post = async (url, body) => {
+const post = async(url, body) => {
     try {
         console.log("post - " + url + " post data - " + JSON.stringify(body));
         const response = await fetch(url, body);
@@ -316,7 +316,7 @@ async function postData(url = '', data = {}) {
         //credentials: 'same-origin', 
         headers: {
             'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         //redirect: 'follow', // manual, *follow, error
         //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -327,6 +327,80 @@ async function postData(url = '', data = {}) {
     return response.json(); // parses JSON response into native JavaScript objects
 }
 // -------------------------------------------------------------------------------------------------------------
+
+// Audit ----------
+
+$('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+    //alert("id" + e.target.id);
+    document.getElementById("newphoto").value = "";
+    switch (e.target.id) {
+        case "audit-tab":
+            {
+                generateAccordian();
+                break;
+            }
+    }
+});
+
+function generateAccordian() {
+    getData(ENDPOINT_URL + "/photos?type=getPrefix").then((res) => {
+        //alert("getphoto - " + JSON.stringify(res))
+        if (res) {
+            var accordianContent = "";
+            res.forEach(function(data) {
+                //console.log(data.Prefix);
+                var id = "id_" + data.Prefix.substring(0, data.Prefix.length - 1);
+                var dataId = id + "_data";
+                accordianContent += '<div class="accordion-item">' +
+                    '<h2 class="accordion-header" id="' + id + '">' +
+                    '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' + dataId + '" aria-expanded="false" aria-controls="' + dataId + '">' + data.Prefix +
+                    '</button></h2><div id="' + dataId + '" class="accordion-collapse collapse" aria-labelledby="' + id + '" data-bs-parent="#auditData"><div class="accordion-body">DATA</div></div></div>'
+                $("#auditData").html(accordianContent);
+            })
+        } else {
+            console.log("Err: cant load audit data !!")
+        }
+    });
+}
+
+
+function loadS3Content(parentId) {
+    var id = parentId.replace("id_", "").replace("_data", "") + "/";
+    console.log(id);
+    getData(ENDPOINT_URL + "/photos?type=getPrefix&pref=" + id).then((res) => {
+        if (res) {
+            $("#" + parentId + "_table").bootstrapTable({
+                data: res,
+                onClickRow: function(row, $element) {
+                    //console.log(row);
+                    //console.log(JSON.stringify($element));
+                    getData(ENDPOINT_URL + "/photos?type=getUserImage&bucket=sg-mes-face-match&image=" + row.Key).then((res) => {
+                        $(".modal-body img").attr("src", "data:" + res.ContentType + ";base64," + res.data);
+                    });
+                    var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+                        keyboard: true
+                    });
+                    myModal.show();
+                }
+            });
+            console.log(JSON.stringify(res));
+        } else {
+            console.log("Err: cant load audit pref S3 data !!")
+        }
+    });
+}
+
+
+
+var myCollapsible = document.getElementById('auditData')
+myCollapsible.addEventListener('shown.bs.collapse', function(event) {
+    var tableContent = '<div class="table-responsive-lg" style="margin:4%;"><table id="' + event.target.id + "_table" + '" class="table table-hover" style="width:80%;height: 60%;overflow-y: auto;"><thead><tr><th data-field="Key">Name</th><th data-field="LastModified" data-formatter="dateFormat">Time</th><th data-field="Size" data-formatter="numFormat">Size</th></tr></thead></table></div>'
+    $("#" + event.target.id).html(tableContent);
+    loadS3Content(event.target.id);
+
+});
+// Audit End -------
+
 
 function clear() {
     $("main").hide();
