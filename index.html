@@ -144,10 +144,10 @@
         <!-- Nav tabs -->
         <ul class="nav nav-pills mb-3" id="myTab" role="tablist" style="margin-top: 2%;">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Workers</a>
+                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Customers</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="attendance-tab" data-bs-toggle="tab" href="#attendance" role="tab" aria-controls="attendance" aria-selected="false">Worker Detail</a>
+                <a class="nav-link" id="attendance-tab" data-bs-toggle="tab" href="#attendance" role="tab" aria-controls="attendance" aria-selected="false">Customer Detail</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="audit-tab" data-bs-toggle="tab" href="#audit" role="tab" aria-controls="audit" aria-selected="false">Audit</a>
@@ -165,7 +165,7 @@
                                     <table id="workerdata" class="table table-hover table-striped" style="width:80%">
                                         <thead>
                                             <tr>
-                                                <th data-field="facility">Facility</th>
+                                                <th data-field="facility" data-visible="false">Facility</th>
                                                 <th data-field="name">Name</th>
                                                 <th data-field="email">Email</th>
                                                 <th data-field="lastlogin" data-formatter="dateFormat">Last Login</th>
@@ -252,7 +252,7 @@
                     <div class="form-group">
                         <select class="form-control" id="type">
                             <option value="admin">Admin</option>
-                            <option value="worker">Worker</option>
+                            <option value="worker">Customer</option>
                         </select></div><br />
                     <button id="login" class="w-36 btn btn-lg btn-primary">Sign In</button>
                     <button id="signup" class="w-36 btn btn-lg btn-primary">Sign Up</button>
@@ -274,7 +274,7 @@
         function dateFormat(value, row, index) {
             var prettyDate = moment(value).format('D MMM YYYY h:mm:ss a');
             if (prettyDate === 'Invalid date') {
-                prettyDate = "New Worker";
+                prettyDate = "New Customer";
             }
             return prettyDate;
         }
