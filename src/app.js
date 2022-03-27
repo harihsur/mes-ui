@@ -144,7 +144,7 @@ function loadWorkerData() {
                 data: res,
                 onClickRow: function(row, $element) {
                     genIDData(row);
-                    //attendanceTabload(row);
+                    attendanceTabload(row);
                     //alert(JSON.stringify($element))
                 }
             });
@@ -156,7 +156,7 @@ function attendanceTabload(row) {
     clearImg();
     getPhoto(row.id + ".jpg");
     loadAttendanceTime(row);
-    $('#attendance-tab').tab('show');
+    //$('#attendance-tab').tab('show');
     $("#currentId").val(row.id);
 }
 
