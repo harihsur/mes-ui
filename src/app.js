@@ -390,7 +390,7 @@ function genIDData(content, photoPrefix){
       }
 
     document.getElementById('idtable');
-    var tableContent = '<div class="table-responsive-lg" style="margin:4%;"><table id="id_table" class="table table-hover table-striped" style="width:80%;height: 60%;overflow-y: auto;"><thead><tr><th data-field="Key">Factor</th><th data-field="LastModified" data-formatter="dateFormat">Value</th></tr></thead><tbody>';
+    var tableContent = '<div class="table-responsive-lg" style="margin:4%;"><table id="id_table" class="table table-hover" style="width:80%;height: 60%;overflow-y: auto;"><thead><tr><th data-field="Key">Factor</th><th data-field="LastModified" data-formatter="dateFormat">Value</th></tr></thead><tbody>';
     
     for (var key in content){
         tableContent+= '<tr><td>'+ key +'</td><td>'+content[key]+'</td></tr>'
