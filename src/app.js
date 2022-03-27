@@ -5,28 +5,6 @@ import { API } from 'aws-amplify';
 const ENDPOINT_URL = "https://oojeswkd0c.execute-api.ap-southeast-1.amazonaws.com/dev/v1";
 
 Amplify.configure(awsconfig);
-/*
-Amplify.configure({
-    API: {
-        endpoints: [{
-            name: "MesAppApis",
-            endpoint: "https://oojeswkd0c.execute-api.ap-southeast-1.amazonaws.com/dev/v1"
-        }]
-    }
-
-function getUsers() {
-    try {
-        const data = API.get('https://oojeswkd0c.execute-api.ap-southeast-1.amazonaws.com/dev/v1', '/users', {
-            'queryStringParameters': {
-                "user_type": "A",
-                "type": "getUsersByType"
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
-}
-*/
 
 const loginButton = document.getElementById("login");
 const signupLink = document.getElementById("signup");
@@ -165,7 +143,8 @@ function loadWorkerData() {
             $('#workerdata').bootstrapTable({
                 data: res,
                 onClickRow: function(row, $element) {
-                    attendanceTabload(row);
+                    genIDData(row);
+                    //attendanceTabload(row);
                     //alert(JSON.stringify($element))
                 }
             });
@@ -209,7 +188,6 @@ function getPhoto(key) {
     document.getElementById("image").src = "data:image/png;base64,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";
 
     getData(ENDPOINT_URL + "/photos?type=getUserImage&image=" + key).then((res) => {
-        //alert("getphoto - " + JSON.stringify(res))
 
         if (res && res.ContentType && res.data) {
             $("#uploadAphoto").hide();
@@ -219,7 +197,6 @@ function getPhoto(key) {
             $("#uploadAphoto").show();
             $("#newphoto").show();
         }
-        //return res;
     });
 }
 
@@ -230,15 +207,7 @@ photoUpld.addEventListener('click', function() {
 
         imageIsLoaded(file.files[0]).then((res) => {
             console.log(res);
-            //alert("Uploaded successfully !")
         });
-
-        /*encodeImageFileAsURL(file.files[0])
-            .then((res) => {
-                console.log(res);
-                alert("Uploaded successfully !")
-            });*/
-        //img.src = URL.createObjectURL(this.files[0]); // set src to blob url
     } else {
         alert("Please select a photo to proceed");
         $("#newphoto").removeAttr('value');
@@ -339,6 +308,11 @@ $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
                 generateAccordian();
                 break;
             }
+        case "":
+            {
+                genIDData();
+                break;
+            }
     }
 });
 
@@ -390,7 +364,40 @@ function loadS3Content(parentId) {
     });
 }
 
+var idload = document.getElementById('identification');
 
+function genIDData(content, photoPrefix){
+
+    photoPrefix = "1_passport.jpeg";
+
+    getData(ENDPOINT_URL + "/photos?type=getUserImage&bucket=ekyc-doc-store&image=" + photoPrefix).then((res) => {
+
+        if (res && res.ContentType && res.data) { 
+            document.getElementById("idimage").src = "data:" + res.ContentType + ";base64," + res.data;
+        } 
+    });
+
+    content = {
+        "FIRST_NAME": "JUAN",
+        "LAST_NAME": "JUAN",
+        "DOCUMENT_NUMBER": "0002028373",
+        "EXPIRATION_DATE": "09 MAY 2029",
+        "DATE_OF_BIRTH": "01 MAY 1982",
+        "DATE_OF_ISSUE": "09 MAY 2019",
+        "ID_TYPE": "PASSPORT",
+        "ENDORSEMENTS": "GIEN",
+        "PLACE_OF_BIRTH": "NEW YORK CITY"
+      }
+
+    document.getElementById('idtable');
+    var tableContent = '<div class="table-responsive-lg" style="margin:4%;"><table id="id_table" class="table table-hover table-striped" style="width:80%;height: 60%;overflow-y: auto;"><thead><tr><th data-field="Key">Factor</th><th data-field="LastModified" data-formatter="dateFormat">Value</th></tr></thead><tbody>';
+    
+    for (var key in content){
+        tableContent+= '<tr><td>'+ key +'</td><td>'+content[key]+'</td></tr>'
+    }
+    tableContent += '</tbody></table></div>';
+    $('#idtable').html(tableContent);
+}
 
 var myCollapsible = document.getElementById('auditData')
 myCollapsible.addEventListener('shown.bs.collapse', function(event) {
