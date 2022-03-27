@@ -367,7 +367,7 @@ function loadS3Content(parentId) {
 var idload = document.getElementById('identification');
 
 function genIDData(content, photoPrefix){
-
+    $('#identification-tab').tab('show');
     photoPrefix = "1_passport.jpeg";
 
     getData(ENDPOINT_URL + "/photos?type=getUserImage&bucket=ekyc-doc-store&image=" + photoPrefix).then((res) => {
